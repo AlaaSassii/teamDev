@@ -1,0 +1,104 @@
+// Set height of HTML and body to 100%
+html, body {
+            height: 100%;
+          }
+          
+          // Set display of body to flex, flex-direction to column, align-items to center, justify-content to center, width to 100%, and background to black
+          body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background: #000;
+          }
+          
+          // Set max-width of svg elements to 100%
+          svg {
+            max-width: 100%;
+          }
+          
+          // Declare number of electrons
+          $electrons: 3;
+          
+          // Declare atom size
+          $atom-size: 500px;
+          
+          // Declare animation configuration
+          $logo_config: (
+            name: logo_kinetics,
+            duration: 2.5s,
+            timing: linear,
+            iteration: infinite,
+            direction: normal,
+            fill-mode: forwards
+          );
+          
+          // Define function to set up the animation
+          @function sh-setup($config) {
+            @return zip(map-values($config)...);
+          }
+          
+          // Define keyframes for animation
+          @keyframes logo_kinetics {
+            to {
+              transform: rotate(360deg);
+            }
+          }
+          
+          // Define the .e-albania class
+          .e-albania {
+            height: $atom-size;
+            position: relative;
+            width: $atom-size;
+            // Apply animation and positioning to svg elements that are not #orbit
+            svg:not(#orbit) {
+              animation: sh-setup($logo_config);
+              position: absolute;
+              top: -50%;
+              left: 0;
+              transform-origin: bottom center;
+              width: fit-content;
+              >circle{
+              }
+            }
+          }
+          
+       
+
+
+          #circle {
+            animation: colorChange 5s ease-in-out infinite;
+            
+          }
+        
+          @keyframes colorChange {
+            0% {
+              fill: #EB1E51;
+            }
+            25% {
+              fill: blue;
+            }
+            50% {
+              fill: yellow;
+            }
+            75% {
+              fill: green;
+            }
+            100% {
+              fill: #EB1E51;
+            }
+          }
+
+
+          .ala-svg{
+            overflow: visible;
+          }
+          img{
+            position: absolute;
+            top:50% ; 
+            left:50% ; 
+            transform: translate(-50% , -50% );
+            width: 200%;
+
+          }
